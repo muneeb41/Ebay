@@ -76,8 +76,8 @@ const ProductDetails = () => {
             {/* Image Section */}
             <div className="w-full flex justify-center sm:items-center lg:w-1/2 p-4">
               <img
-                src={product.thumbnail || "placeholder.png"}
-                alt={product.title || "Product Image"}
+                src={product.thumbnail }
+                alt={product.title }
                 className=" rounded-lg w-[35vw] hover-scale "
               />
             </div>
