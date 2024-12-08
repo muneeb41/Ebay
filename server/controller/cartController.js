@@ -106,7 +106,7 @@ export const removeFromCart = async (req, res) => {
       const result = await CartModel.deleteMany({ userId });
   
       if (result.deletedCount === 0) {
-        return res.status(404).json({ message: "No items found in the cart" });
+        return res.status(200).json({ message: "No items found in the cart" });
       }
   
       return res.status(200).json({
