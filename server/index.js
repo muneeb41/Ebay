@@ -12,6 +12,7 @@ const app = express();
 dotenv.config()
 
 const allowedOrigins = [
+    'https://ebay-client.onrender.com',
     'http://localhost:5173'
 ];
 
