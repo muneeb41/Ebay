@@ -1,0 +1,92 @@
+.box-shadow-main{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  }
+
+  .hover-scale {
+    transition: transform 0.3s ease; /* Smooth transition effect */
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.10); /* Increase size by 17% on hover */
+  }
+
+  
+.transition-bg {
+  transition: background-image 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+
+
+.fade-in {
+  opacity: 1;
+}
+
+
+/* ============================================page reload animation =================================*/
+
+@keyframes slideFromDown {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-from-down {
+  animation: slideFromDown 1s ease-in-out forwards;
+  position: relative;
+}
+
+
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-from-left {
+  animation: slideFromLeft 1s ease-in-out forwards;
+  position: relative;
+}
+
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-from-right {
+  animation: slideFromRight 1s ease-in-out forwards;
+  position: relative;
+}
+
+
+@keyframes slideFromUp {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-from-up {
+  animation: slideFromUp 1s ease-in-out forwards;
+  position: relative;
+}
