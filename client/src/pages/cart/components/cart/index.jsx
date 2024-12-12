@@ -7,13 +7,14 @@ import { updateQuantity, removeFromCart } from '../../../../redux/cart/cartSlice
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import apiClient from '../../../../libs/apiClient.js';
-import { REMOVE_FROM_CART_ROUTE } from '../../../../utils/constants.js';
+import { REMOVE_FROM_CART_ROUTE, UPDATE_CART_ITEM_ROUTE } from '../../../../utils/constants.js';
 
 
 const Cart = ({ cart }) => {
   const [quantity, setQuantity] = useState(cart.quantity);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [timerId , setTimerId]= useState()
 
   useEffect(() => {
     dispatch(updateQuantity({ id: cart.id, quantity }));
@@ -35,6 +36,33 @@ const Cart = ({ cart }) => {
   const handleDetails = () => {
     navigate(`/product-details/${cart.id}`);
   };
+
+  const handleUpdate = (qty) => {
+    setQuantity(qty);
+    debouncedUpdateApi(qty); // Use the debounced version of the API call
+  };
+  
+  const updateApiFunc = async (qty) => {
+    try {
+      const response = await apiClient.patch(`${UPDATE_CART_ITEM_ROUTE}/${cart.id}`, { quantity: qty });
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+      setQuantity(quantity); // Revert quantity if API call fails
+      toast.error("Server Error");
+    }
+  };
+  
+  const debouncing = (func, delay) => {  
+    return function (...args) {
+      clearTimeout(timerId);
+      let timeout = setTimeout(() => func(...args), delay); // Use arguments for dynamic calls
+      setTimerId(timeout);
+    };
+  };
+  
+  // Create a debounced version of updateApiFunc
+  const debouncedUpdateApi = debouncing(updateApiFunc, 2000);
 
   return (
     <div className="relative flex flex-col sm:flex-row items-start p-4 sm:p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow space-y-4 sm:space-y-0 sm:space-x-6">
@@ -89,7 +117,11 @@ const Cart = ({ cart }) => {
           <label className="hidden sm:block text-gray-700 font-medium">Qty:</label>
           <div className="flex items-center space-x-2">
             <button
-              onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+              onClick={() => setQuantity((prev) =>{
+                let qty =  Math.max(1, prev - 1);
+                handleUpdate(qty);
+                return qty;
+              })}
               className="p-2 rounded-full bg-gray-200 hover:bg-red-500 hover:text-white transition"
             >
               <AiOutlineMinus size={16} />
@@ -98,11 +130,11 @@ const Cart = ({ cart }) => {
               type="number"
               value={quantity}
               min="1"
-              onChange={(e) => setQuantity(Number(e.target.value))}
+              onChange={(e) => handleUpdate(Number(e.target.value))}
               className="w-12 sm:w-16 text-center py-1 border rounded-md"
             />
             <button
-              onClick={() => setQuantity((prev) => prev + 1)}
+              onClick={() => handleUpdate(quantity+1)}
               className="p-2 rounded-full bg-gray-200 hover:bg-green-500 hover:text-white transition"
             >
               <AiOutlinePlus size={16} />

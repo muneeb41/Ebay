@@ -118,3 +118,34 @@ export const removeFromCart = async (req, res) => {
     }
   };
   
+
+  export const updateCart = async (req, res) => {
+    try {
+      const userId = req.id; 
+      const  id  = req.params.id; // The cart  ID to update the cart
+      const updateFields = req.body; // Fields to update
+      
+      if (!id || Object.keys(updateFields).length === 0) {
+        return res.status(400).json({ message: "Missing required fields" });
+      }
+      
+      // Find and update the cart item
+      const updatedItem = await CartModel.findOneAndUpdate(
+        { userId, id },
+        { $set: updateFields }, // Dynamically update fields
+        { new: true }
+      );
+      
+      if (!updatedItem) {
+        return res.status(404).json({ message: "Cart item not found" });
+      }
+      
+      return res.status(200).json({
+        message: "Cart item updated successfully",
+        cart: updatedItem,
+      });
+      
+    } catch (error) {
+        return res.status(500).json({ message: "Server error", error });
+    }
+  }
