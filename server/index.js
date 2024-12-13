@@ -6,9 +6,8 @@ import dbConnection from './config/config.js'
 import authRouter from './routes/authRoutes.js'
 import cartRouter from './routes/cartRoutes.js'
 import swaggerUi from 'swagger-ui-express'
-import swaggerDocument from './swagger-output.json' assert { type: 'json' };
-// const swaggerUi = require('swagger-ui-express');
-// const swaggerDocument = require('./swagger.json');
+import fs from 'fs';
+const swaggerDocument = JSON.parse(fs.readFileSync('./swagger-output.json', 'utf-8'));
 import { userSwagger } from './swagger/authSwagger.js'
 import { cartSwagger } from './swagger/cartSwagger.js'
 
