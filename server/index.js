@@ -5,6 +5,13 @@ import cookieParser from 'cookie-parser'
 import dbConnection from './config/config.js'
 import authRouter from './routes/authRoutes.js'
 import cartRouter from './routes/cartRoutes.js'
+import swaggerUi from 'swagger-ui-express'
+import swaggerDocument from './swagger-output.json' assert { type: 'json' };
+// const swaggerUi = require('swagger-ui-express');
+// const swaggerDocument = require('./swagger.json');
+import { userSwagger } from './swagger/authSwagger.js'
+import { cartSwagger } from './swagger/cartSwagger.js'
+
 
 
 
@@ -13,7 +20,7 @@ dotenv.config()
 
 const allowedOrigins = [
     'https://ebay-client.onrender.com',
-    'http://localhost:5173'
+    'http://localhost:5173',
 ];
 
 
@@ -38,9 +45,13 @@ dbConnection();
 
 
 // routes
+  
+app.use('/api/auth',userSwagger ,authRouter);
+app.use('/api/cart',cartSwagger, cartRouter);
 
-app.use('/api/auth', authRouter);
-app.use('/api/cart', cartRouter);
+
+// swagger setup
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 

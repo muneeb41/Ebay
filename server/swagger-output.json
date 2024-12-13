@@ -1,0 +1,433 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "eBay API Documentation",
+    "description": "API Documentation includes user authentication and carts operations",
+    "version": "1.0.0"
+  },
+  "host": "https://ebay-ye10.onrender.com",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/auth/signup": {
+      "post": {
+        "tags": [
+          "Users API"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Users API"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "tags": [
+          "Users API"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/auth/get-user": {
+      "get": {
+        "tags": [
+          "Users API"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/cart/addToCart": {
+      "post": {
+        "tags": [
+          "Carts API"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "quantity": {
+                  "type": "number",
+                  "example": 1
+                },
+                "id": {
+                  "type": "number",
+                  "example": 115
+                },
+                "title": {
+                  "type": "string",
+                  "example": "MotoGP CI.H1"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "The MotoGP CI.H1 is a high-performance motorcycle inspired by MotoGP racing."
+                },
+                "category": {
+                  "type": "string",
+                  "example": "motorcycle"
+                },
+                "price": {
+                  "type": "number",
+                  "example": 14999.99
+                },
+                "discountPercentage": {
+                  "type": "number",
+                  "example": 17
+                },
+                "rating": {
+                  "type": "number",
+                  "example": 4.15
+                },
+                "stock": {
+                  "type": "number",
+                  "example": 85
+                },
+                "tags": {
+                  "type": "array",
+                  "example": [
+                    "sports",
+                    "racing"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "MotoGP"
+                },
+                "sku": {
+                  "type": "string",
+                  "example": "0ENL5IX6"
+                },
+                "weight": {
+                  "type": "number",
+                  "example": 9
+                },
+                "dimensions": {
+                  "type": "object",
+                  "properties": {
+                    "properties": {
+                      "type": "object",
+                      "properties": {
+                        "width": {
+                          "type": "number",
+                          "example": 2.5
+                        },
+                        "height": {
+                          "type": "number",
+                          "example": 1.2
+                        },
+                        "depth": {
+                          "type": "number",
+                          "example": 0.8
+                        }
+                      }
+                    }
+                  }
+                },
+                "warrantyInformation": {
+                  "type": "string",
+                  "example": "2 year warranty"
+                },
+                "shippingInformation": {
+                  "type": "string",
+                  "example": "Ships in 1 month"
+                },
+                "availabilityStatus": {
+                  "type": "string",
+                  "example": "In Stock"
+                },
+                "reviews": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "rating": {
+                        "type": "number",
+                        "example": 4
+                      },
+                      "comment": {
+                        "type": "string",
+                        "example": "Good but expensive."
+                      },
+                      "date": {
+                        "type": "string",
+                        "example": "2024-11-15T08:30:00Z"
+                      },
+                      "reviewerName": {
+                        "type": "string",
+                        "example": "Jane Smith"
+                      },
+                      "reviewerEmail": {
+                        "type": "string",
+                        "example": "jane@example.com"
+                      }
+                    }
+                  }
+                },
+                "returnPolicy": {
+                  "type": "string",
+                  "example": "30 days return policy"
+                },
+                "minimumOrderQuantity": {
+                  "type": "number",
+                  "example": 1
+                },
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "properties": {
+                      "type": "object",
+                      "properties": {
+                        "createdAt": {
+                          "type": "string",
+                          "example": "2024-12-01T10:00:00Z"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "example": "2024-12-02T12:00:00Z"
+                        },
+                        "barcode": {
+                          "type": "string",
+                          "example": "123456789012"
+                        },
+                        "qrCode": {
+                          "type": "string",
+                          "example": "https://example.com/qrcode"
+                        }
+                      }
+                    }
+                  }
+                },
+                "images": {
+                  "type": "array",
+                  "example": [
+                    "https://cdn.dummyjson.com/products/images/motorcycle/image1.jpg",
+                    "https://cdn.dummyjson.com/products/images/motorcycle/image2.jpg",
+                    "https://cdn.dummyjson.com/products/images/motorcycle/image3.jpg",
+                    "https://cdn.dummyjson.com/products/images/motorcycle/image4.jpg"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "thumbnail": {
+                  "type": "string",
+                  "example": "https://cdn.dummyjson.com/products/images/motorcycle/MotoGP%20CI.H1/thumbnail.jpg"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/cart/removeFromCart/{id}": {
+      "delete": {
+        "tags": [
+          "Carts API"
+        ],
+        "description": "demo id is 115 but please firstly add cart into database by using addToCart API method",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/cart/clearCart": {
+      "delete": {
+        "tags": [
+          "Carts API"
+        ],
+        "description": "",
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/cart/getCarts": {
+      "get": {
+        "tags": [
+          "Carts API"
+        ],
+        "description": "",
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/cart/update/{id}": {
+      "patch": {
+        "tags": [
+          "Carts API"
+        ],
+        "description": "demo id is 115 but please firstly add cart into database by using addToCart API method",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "quantity": {
+                  "type": "number",
+                  "example": 1
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    }
+  }
+}
