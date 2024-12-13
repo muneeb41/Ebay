@@ -8,7 +8,7 @@
   "host": "https://ebay-ye10.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api/auth/signup": {
