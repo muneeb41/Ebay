@@ -5,7 +5,7 @@ const doc = {
     title: 'eBay API Documentation',
     description: 'API Documentation includes user authentication and carts operations'
   },
-  host: 'https://ebay-ye10.onrender.com',
+  host: 'ebay-ye10.onrender.com',
  
 };
 
