@@ -9,10 +9,17 @@ Home page:
 ![image](https://github.com/user-attachments/assets/f5c04e9b-6f50-4cb9-b4fd-3c74951d6722)
 
 
-## Deployment live Links
+## important Links
 
-Click it:
-[eBay live link](https://ebay-client.onrender.com/)
+[eBay live Link](https://ebay-client.onrender.com/) 
+
+[API Documentation](https://ebay-ye10.onrender.com/api-docs/)
+
+[Github ](https://github.com/muneeb41/Ebay)
+
+[Video explaination for frontend ](https://youtu.be/p4c_GuT_GwY?si=tE2Pjf53E2N5nmdP)
+
+[Video explaination for backend ](https://youtu.be/THHnhYiElBU?si=YBgQPAYr3s-DJm5y)
 
 ## Features
 
@@ -155,15 +162,17 @@ server/
 ├── routes/
 │   ├── authRoutes.js
 │   └── cartRoutes.js
+├── swagger/
+│   ├── authSwagger.js
+│   └── cartSwagger.js
 ├── node_modules/
 ├── .env
 ├── .gitignore
 ├── index.js
 ├── package-lock.json
 ├── package.json
+├── swagger-output.json
 └── README.md
-
-
 </pre>
 
 ## Technologies Used in Frontend:
